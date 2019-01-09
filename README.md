@@ -3,6 +3,7 @@ h5 performance optimization checklist
 
 * cdn: js, css, img, svg, font, video, audio
 * http header: cache-control (cache clean)
+* resources loading order & async load
 * Split router
 * Split chunk: balance packages
 * first patch: only include reachable code
@@ -22,3 +23,4 @@ h5 performance optimization checklist
 * Dllreference
 * gif click load
 * Img size
+* opt algorithm
