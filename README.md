@@ -27,3 +27,15 @@ h5 performance optimization checklist
 * Lazy component, lazy package
 * Infinite list
 * opt algorithm
+
+### script -> style -> layout -> paint -> composite
+* raf instead of setTimeout
+* web workers
+* micro-tasks
+* reduce selector complexity
+* try to avoid layout
+* flexbox
+* avoid forced sync layout
+* use transforms & opactiy
+* moving elements with translateZ
+* avoid overuse promotion
