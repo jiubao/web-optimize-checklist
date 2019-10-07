@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Web Performance Checklist</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
@@ -25,8 +25,116 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Web Performance</h1>
+					<p>An optimization checklist</p>
+					<p> 
+						<small>
+							Created by <a href="https://github.com/jiubao">xiad</a> - <a href="https://github.com/jiubao">https://github.com/jiubao</a>
+						</small>
+					</p>
+				</section>
+				<section>
+					<section>
+						<h2>CDN</h2>
+						<p>Content Delivery Network</p>
+
+						<ul>
+							<li> Reduce distance between users and resources </li>
+							<li> Browser maximum concurrent http connections to same hostname </li>
+							<li> Browser cache </li>
+						</ul>
+					</section>
+					<section>
+						<img src="./img/cdn.png" style="border: 0px; transform: scale(0.8) translate(0px, -70px);" />
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Expire Header</h2>
+						<p>Cache-Control</p>
+						<table>
+							<thead>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1 year</td>
+									<td>Cache-Control: public, max-age=31536000</td>
+								</tr>
+								<tr>
+									<td>1 week</td>
+									<td>Cache-Control: public, max-age=604800</td>
+								</tr>
+								<tr></tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+
+				<section>
+					<h2>Minify & Gzip</h2>
+					<p>Minify your JavaScript source code.</p>
+					<p>Gzip your scripts and stylesheets.</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Resources loading order</h2>
+						<ul>
+							<!-- <li>css at the top</li> -->
+							<li>Put your stylesheets in the document HEAD using the LINK tag.</li>
+							<li>flash of unstyled content (FOUC)</li>
+							<li>Move scripts to the bottom of the page.</li>
+							<li>Make sure scripts are included only once.</li>
+							<li>Inline scripts are blocked by stylesheets</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Split code</h2>
+						<ul>
+							<li>Webpack</li>
+							<li>Browserify</li>
+							<li>Rollup</li>
+							<li>Parcel</li>
+						</ul>
+					</section>
+					<section>
+						<h4>first patch</h4>
+						<ul>
+							<li> Only include reachable code </li>
+							<li>First page or even first screen</li>
+							<li>Move un-used code to async patch</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Split by router</h4>
+					</section>
+					<section>
+						<h4>balance patches</h4>
+						<p>Webpack4</p>
+						<ul>
+							<li>New chunk can be shared OR modules are from the node_modules folder</li>
+							<li> New chunk would be bigger than 30kb (before min+gz) </li>
+							<li> Maximum number of parallel requests when loading chunks on demand would be lower or equal to 5 </li>
+							<li> Maximum number of parallel requests at initial page load would be lower or equal to 3 </li>
+						</ul>
+					</section>
+					<section>
+						<h4>webpack bundle analyzer</h4>
+						<img src="./img/bundle.gif" />
+					</section>
+					<section>
+						<h4>Native import & export</h4>
+						<p>Chrome 61</p>
+					</section>
+				</section>
 			</div>
 		</div>
 
