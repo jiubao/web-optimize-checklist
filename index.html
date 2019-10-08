@@ -1,157 +1,203 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>Web Performance Checklist</title>
+    <title>Web Performance Checklist</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h1>Web Performance</h1>
-					<p>An optimization checklist</p>
-					<p> 
-						<small>
-							Created by <a href="https://github.com/jiubao">xiad</a> - <a href="https://github.com/jiubao">https://github.com/jiubao</a>
-						</small>
-					</p>
-				</section>
-				<section>
-					<section>
-						<h2>CDN</h2>
-						<p>Content Delivery Network</p>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Web Performance</h1>
+          <p>An optimization checklist</p>
+          <p>
+            <small>
+              Created by <a href="https://github.com/jiubao">xiad</a> -
+              <a href="https://github.com/jiubao">https://github.com/jiubao</a>
+            </small>
+          </p>
+        </section>
+        <section>
+          <section>
+            <h2>CDN</h2>
+            <p>Content Delivery Network</p>
 
-						<ul>
-							<li> Reduce distance between users and resources </li>
-							<li> Browser maximum concurrent http connections to same hostname </li>
-							<li> Browser cache </li>
-						</ul>
-					</section>
-					<section>
-						<img src="./img/cdn.png" style="border: 0px; transform: scale(0.8) translate(0px, -70px);" />
-					</section>
-				</section>
+            <ul>
+              <li>Reduce distance between users and resources</li>
+              <li>
+                Browser maximum concurrent http connections to same hostname
+              </li>
+              <li>Browser cache</li>
+            </ul>
+          </section>
+          <section>
+            <img
+              src="./img/cdn.png"
+              style="border: 0px; transform: scale(0.8) translate(0px, -70px);"
+            />
+          </section>
+        </section>
 
-				<section>
-					<section>
-						<h2>Expire Header</h2>
-						<p>Cache-Control</p>
-						<table>
-							<thead>
-								<tr>
-									<td></td>
-									<td></td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1 year</td>
-									<td>Cache-Control: public, max-age=31536000</td>
-								</tr>
-								<tr>
-									<td>1 week</td>
-									<td>Cache-Control: public, max-age=604800</td>
-								</tr>
-								<tr></tr>
-							</tbody>
-						</table>
-					</section>
-				</section>
+        <section>
+          <section>
+            <h2>Expire Header</h2>
+            <p>Cache-Control</p>
+            <table>
+              <thead>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 year</td>
+                  <td>Cache-Control: public, max-age=31536000</td>
+                </tr>
+                <tr>
+                  <td>1 week</td>
+                  <td>Cache-Control: public, max-age=604800</td>
+                </tr>
+                <tr></tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
 
-				<section>
-					<h2>Minify & Gzip</h2>
-					<p>Minify your JavaScript source code.</p>
-					<p>Gzip your scripts and stylesheets.</p>
-				</section>
+        <section>
+          <h2>Minify & Gzip</h2>
+          <p>Minify your JavaScript source code.</p>
+          <p>Gzip your scripts and stylesheets.</p>
+        </section>
 
-				<section>
-					<section>
-						<h2>Resources loading order</h2>
-						<ul>
-							<!-- <li>css at the top</li> -->
-							<li>Put your stylesheets in the document HEAD using the LINK tag.</li>
-							<li>flash of unstyled content (FOUC)</li>
-							<li>Move scripts to the bottom of the page.</li>
-							<li>Make sure scripts are included only once.</li>
-							<li>Inline scripts are blocked by stylesheets</li>
-						</ul>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Split code</h2>
-						<ul>
-							<li>Webpack</li>
-							<li>Browserify</li>
-							<li>Rollup</li>
-							<li>Parcel</li>
-						</ul>
-					</section>
-					<section>
-						<h4>first patch</h4>
-						<ul>
-							<li> Only include reachable code </li>
-							<li>First page or even first screen</li>
-							<li>Move un-used code to async patch</li>
-						</ul>
-					</section>
-					<section>
-						<h4>Split by router</h4>
-					</section>
-					<section>
-						<h4>balance patches</h4>
-						<p>Webpack4</p>
-						<ul>
-							<li>New chunk can be shared OR modules are from the node_modules folder</li>
-							<li> New chunk would be bigger than 30kb (before min+gz) </li>
-							<li> Maximum number of parallel requests when loading chunks on demand would be lower or equal to 5 </li>
-							<li> Maximum number of parallel requests at initial page load would be lower or equal to 3 </li>
-						</ul>
-					</section>
-					<section>
-						<h4>webpack bundle analyzer</h4>
-						<img src="./img/bundle.gif" />
-					</section>
-					<section>
-						<h4>Native import & export</h4>
-						<p>Chrome 61</p>
-					</section>
-				</section>
-			</div>
-		</div>
+        <section>
+          <section>
+            <h2>Resources loading order</h2>
+          </section>
+          <section>
+            <h4>Put Stylesheets at the Top</h4>
+            <img src="./img/ie_blank.png" alt="" style="border: 0;" />
+            <p>FOUC (flash of unstyled content)</p>
+            <p>Put your stylesheets in the document HEAD using the LINK tag.</p>
+          </section>
+          <section>
+            <h4>Put Scripts at the Bottom</h4>
+            <p>Move scripts to the bottom of the page.</p>
+          </section>
+          <section>
+            <h4>Load Scripts Without Blocking</h4>
+            <img src="./img/script_block_1.png" style="border: 0;" />
+            <img src="./img/script_block_2.png" style="border: 0;" />
+            <img src="./img/script_block_3.png" style="border: 0;" />
+          </section>
+          <!-- <section>
+            <h4>Make sure scripts are included only once.</h4>
+					</section> -->
+          <section>
+            <h4>Position inline scripts</h4>
+            <p><small>Inline script block</small></p>
+            <img src="./img/script_inline_1.png" style="border: 0;" />
+            <p>Move Inline Scripts to the Bottom</p>
+          </section>
+          <section>
+            <h4>Danger: Stylesheet Followed by Inline Script</h4>
+            <img src="./img/script_inline_2.png" style="border: 0;" />
+            <p>Inline scripts are blocked by stylesheets</p>
+          </section>
+        </section>
 
-		<script src="js/reveal.js"></script>
+        <section>
+          <section>
+            <h2>Split code</h2>
+            <ul>
+              <li>Webpack</li>
+              <li>Browserify</li>
+              <li>Rollup</li>
+              <li>Parcel</li>
+            </ul>
+          </section>
+          <section>
+            <h4>first patch</h4>
+            <ul>
+              <li>Only include reachable code</li>
+              <li>First page or even first screen</li>
+              <li>Move un-used code to async patch</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Split by router</h4>
+          </section>
+          <section>
+            <h4>balance patches</h4>
+            <p>Webpack4</p>
+            <ul>
+              <li>
+                New chunk can be shared OR modules are from the node_modules
+                folder
+              </li>
+              <li>New chunk would be bigger than 30kb (before min+gz)</li>
+              <li>
+                Maximum number of parallel requests when loading chunks on
+                demand would be lower or equal to 5
+              </li>
+              <li>
+                Maximum number of parallel requests at initial page load would
+                be lower or equal to 3
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h4>webpack bundle analyzer</h4>
+            <img src="./img/bundle.gif" />
+          </section>
+          <section>
+            <h4>Native import & export</h4>
+            <p>Chrome 61</p>
+          </section>
+          <section>
+            <h4>Tree Shaking</h4>
+          </section>
+        </section>
+      </div>
+    </div>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          { src: "plugin/highlight/highlight.js", async: true }
+        ]
+      });
+    </script>
+  </body>
 </html>
