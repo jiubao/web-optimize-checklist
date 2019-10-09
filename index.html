@@ -40,6 +40,12 @@
             </small>
           </p>
         </section>
+
+        <section>
+          <h1>Part 1</h1>
+          <h2>TTFB & Resource</h2>
+        </section>
+
         <section>
           <section>
             <h2>CDN</h2>
@@ -151,6 +157,9 @@
             <h4>Split by router</h4>
           </section>
           <section>
+            <h4>DllReference</h4>
+          </section>
+          <section>
             <h4>balance patches</h4>
             <p>Webpack4</p>
             <ul>
@@ -174,11 +183,107 @@
             <img src="./img/bundle.gif" />
           </section>
           <section>
+            <h4>Tree Shaking</h4>
+          </section>
+          <section>
             <h4>Native import & export</h4>
             <p>Chrome 61</p>
           </section>
+        </section>
+
+        <section>
           <section>
-            <h4>Tree Shaking</h4>
+            <h2>Cache</h2>
+          </section>
+          <section>
+            <h4>Offline package</h4>
+          </section>
+          <section>
+            <h4>Api data pre-fetch</h4>
+          </section>
+          <section>
+            <h4>Data cache</h4>
+            <p>localStorage</p>
+          </section>
+        </section>
+
+        <section>
+          <h1>Part 2</h1>
+          <h2>User experience</h2>
+        </section>
+
+        <section>
+          <section>
+            <h2>RAIL</h2>
+            <p style="color: #fff6;"><small>
+              <span style="color: #5388f5">Response</span>
+              .
+              <span style="color: #e25748">Animation</span>
+              .
+              <span style="color: #e19234">Idle</span>
+              .
+              <span style="color: #4ca568">Load</span>
+            </small></p>
+          </section>
+          <section>
+            <h4>0 ~ 16ms</h4>
+            <ul>
+              <li>60 frames per second</li>
+              <li>16ms per frame</li>
+            </ul>
+            <p>It takes time for browser to paint new frame to screen.</p>
+            <ul>
+              <li>10ms to produce a frame</li>
+            </ul>
+          </section>
+          <section>
+            <h4>0 ~ 100ms</h4>
+            <p>Respond to user actions within this time window and users feel like the result is immediate. Any longer, and the connection between action and reaction is broken.</p>
+          </section>
+          <section>
+            <h4>100 ~ 300ms</h4>
+            <p>Users experience a slight perceptible delay.</p>
+          </section>
+          <!-- <section>
+            <h4>300 ~ 1000ms</h4>
+            <p></p>
+          </section> -->
+          <section>
+            <h4>More than 1000ms</h4>
+            <p>Beyond 1000 milliseconds (1 second), users lose focus on the task they are performing.</p>
+          </section>
+          <section>
+            <h4>More than 10000ms</h4>
+            <p>Beyond 10000 milliseconds (10 seconds), users are frustrated and are likely to abandon tasks. They may or may not come back later.</p>
+          </section>
+          <section>
+            <h4>Response</h4>
+            <p><small>Process events in under 50ms</small></p>
+            <ul>
+              <li>Process user input events within 50ms to ensure a visible response within 100ms.</li>
+              <li>For actions that take longer than 50ms to complete, always provide feedback.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Animation</h4>
+            <p><small>Produce a frame in 10ms</small></p>
+            <p>Produce each frame in an animation in 10ms or less. Technically, the maximum budget for each frame is 16ms (1000ms / 60 frames per second ≈ 16ms), but browsers need about 6ms to render each frame, hence the guideline of 10ms per frame.</p>
+          </section>
+          <section>
+            <h4>Idle</h4>
+            <p><small>Maximize idle time</small></p>
+            <ul>
+              <li>Use idle time to complete deferred work.</li>
+              <li>Perform work during idle time in 50ms or less.</li>
+              <li>User interaction should always take the highest priority and interrupt the idle time work.</li>
+            </ul>
+          </section>
+          <section>
+            <img src="./img/rail_1.png" alt="">
+          </section>
+          <section>
+            <h4>Load</h4>
+            <p><small>Deliver content and become interactive in under 5 seconds</small></p>
           </section>
         </section>
       </div>
