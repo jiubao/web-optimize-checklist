@@ -215,7 +215,12 @@
 
         <section>
           <section>
-            <h2>RAIL</h2>
+            <h2>
+              <a
+                href="https://developers.google.com/web/fundamentals/performance/rail"
+                >RAIL</a
+              >
+            </h2>
             <p style="color: #fff6;">
               <small>
                 <span style="color: #5388f5">Response</span>
@@ -387,6 +392,112 @@
           </section>
           <section>
             <h4>lazy patch</h4>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Pixel pipeline</h2>
+            <img src="./img/frame_full.jpg" alt="" />
+          </section>
+          <section>
+            <h4>Reduce layout & paint</h4>
+            <img src="./img/frame-no-layout-paint.jpg" alt="" />
+          </section>
+          <section>
+            <h4>layout</h4>
+            <p>
+              <small>
+                "Paint only" property can skip layout
+              </small>
+            </p>
+            <ul>
+              <li>background image</li>
+              <li>color</li>
+              <li>shadows</li>
+              <li>...</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Avoid forced synchronous layouts</h4>
+            <pre>
+							<code>
+function logBoxHeight() {
+
+  box.classList.add('super-big');
+
+  // Gets the height of the box in pixels
+  // and logs it out.
+  console.log(box.offsetHeight);
+}
+							</code>
+						</pre>
+            <p>
+              <small>
+                In order to answer the height question, the browser must first
+                apply the style change, and then run layout. Only then will it
+                be able to return the correct height. This is unnecessary and
+                potentially expensive work.
+              </small>
+            </p>
+          </section>
+          <section>
+            <h4>paint</h4>
+            <p>
+              <small>
+                Stick to change properties that can be handled by the compositor
+                alone
+              </small>
+            </p>
+            <ul>
+              <li>transforms</li>
+              <li>opacity</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Composite</h4>
+            <p>
+              <small>
+                Promote elements that you plan to animate
+              </small>
+            </p>
+            <pre><code class="css hljs" data-trim data-line-numbers="4,8-11">
+.moving-element {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+					</code></pre>
+          </section>
+          <section>
+            <h4>layers</h4>
+            <img src="./img/layers.png" alt="" />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>performance</h2>
+            <small>
+              <a
+                href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/"
+              >
+                chrome dev tool
+              </a>
+            </small>
+          </section>
+          <section>
+            <a href="https://googlechrome.github.io/devtools-samples/jank/"
+              >sample</a
+            >
+          </section>
+          <section>
+            <h4>FPS meter</h4>
+            <p>
+              <small>
+                Command+Shift+P (Mac), Control+Shift+P (Windows, Linux)
+              </small>
+            </p>
           </section>
         </section>
       </div>
